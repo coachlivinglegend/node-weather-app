@@ -7,6 +7,7 @@ const geocodeLocation = require('./utils/geocodeLocation');
 
 //initialize express
 const app = express();
+const port = process.env.PORT || 8080;
 
 //setup static directory to serve
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -70,6 +71,6 @@ app.get('*', (req, res) => {
   res.render('404', { errorMessage: 'This page no fi exist' });
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log('Server is up');
 });

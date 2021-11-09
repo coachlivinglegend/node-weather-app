@@ -17,7 +17,7 @@ const answer = document.getElementById('answer');
 weatherForm.addEventListener('submit', (e) => {
   e.preventDefault();
   if (value !== undefined) {
-    const ans = doFetch(`http://localhost:8080/weather?address=${search}`);
+    const ans = doFetch(`/weather?address=${search}`);
     answer.textContent = ans.forecast;
   }
 });
