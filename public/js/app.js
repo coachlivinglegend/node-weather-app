@@ -1,23 +1,26 @@
 console.log('kjhgfdh');
 
-const doFetch = (url) => {
+const doFetch = (url, cb) => {
   fetch(url)
-    .then((res) => res)
+    .then((res) => res.json())
     .then((data) => {
       if (data.error) {
-        console.cog(error);
+        console.log(error);
       } else {
-        return data;
+        cb(data);
       }
     });
 };
+
 const weatherForm = document.querySelector('form');
-const search = document.querySelector('input').value;
 const answer = document.getElementById('answer');
 weatherForm.addEventListener('submit', (e) => {
+  const search = document.querySelector('input').value;
   e.preventDefault();
-  if (value !== undefined) {
-    const ans = doFetch(`/weather?address=${search}`);
-    answer.textContent = ans.forecast;
+  if (search !== undefined) {
+    console.log({ search });
+    doFetch(`/weather?address=${search}`, (data) => {
+      answer.textContent = data.forecast;
+    });
   }
 });
